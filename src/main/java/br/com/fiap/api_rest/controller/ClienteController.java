@@ -31,6 +31,7 @@ public class ClienteController {
         return new ResponseEntity<>(clienteSalvo, HttpStatus.CREATED);
     }
 
+
     @GetMapping
     public ResponseEntity<List<ClienteResponse>> readClientes(){
         List<Cliente> clientes = clienteRepository.findAll();
