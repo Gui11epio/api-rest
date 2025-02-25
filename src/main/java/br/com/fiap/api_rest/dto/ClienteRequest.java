@@ -17,7 +17,7 @@ public class ClienteRequest {
     @Email(message = "Email fora do formato")
     private String email;
     @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@!,#])[A-Za-z\\d@!,#]{8,}$",
-    message = "A senha deve conter no mínimo 8 caracteres, letras minusculas e maiusculas")
+            message = "A senha deve conter no mínimo 8 caracteres, letras minusculas e maiusculas")
     private String senha;
     @CPF(message = "O CPF está fora do formato")
     private String cpf;

@@ -7,9 +7,13 @@ import br.com.fiap.api_rest.repository.ClienteRepository;
 import br.com.fiap.api_rest.service.ClienteService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,9 +38,10 @@ public class ClienteController {
 
 
     @GetMapping
-    public ResponseEntity<List<ClienteResponse>> readClientes(){
-        List<Cliente> clientes = clienteRepository.findAll();
-        return new ResponseEntity<>(clienteService.clienteToResponses(clientes), HttpStatus.OK);
+    public ResponseEntity<Page<ClienteResponse>> readClientes() {
+        Pageable pageable = PageRequest
+                .of(0,2,Sort.by("categoria").ascending().and(Sort.by("nome").ascending()));
+        return new ResponseEntity<>(clienteService.findAll(pageable), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
