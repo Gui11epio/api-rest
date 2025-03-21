@@ -1,6 +1,7 @@
 package br.com.fiap.api_rest.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class Filial {
     @OneToMany(mappedBy = "filial")
     private List<Cliente> clientes;
 
-    public Filial() {
+    public Filial(@NotBlank(message = "Nome é obrigatório") String nome, Endereco endereco) {
     }
 
     public Filial(Long id, String nome, Endereco endereco, List<Cliente> clientes) {

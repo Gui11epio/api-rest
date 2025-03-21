@@ -10,13 +10,8 @@ import lombok.Data;
 
 import java.util.List;
 
-@Data
-@AllArgsConstructor
-public class FilialRequest {
-    @NotBlank(message = "O nome é obrigatório")
-    @Size(min = 3, max = 150, message = " o nome deve ter entre 3 e 150 caracteres")
-    private String nome;
-    @NotNull(message = "O endereço é obrigatório")
-    private Endereco endereco;
-    private List<Cliente> clientes;
+
+public record FilialRequest(
+        @NotBlank(message = "Nome é obrigatório") String nome,
+        @NotNull(message = "Enderço é obrigatório") Endereco endereco) {
 }
