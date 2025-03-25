@@ -12,6 +12,9 @@ import java.util.List;
 
 
 public record FilialRequest(
-        @NotBlank(message = "Nome é obrigatório") String nome,
-        @NotNull(message = "Enderço é obrigatório") Endereco endereco) {
+        @NotBlank(message = "Nome é obrigatório")
+        String nome,
+
+        @NotNull(message = "Enderço é obrigatório")
+        Endereco endereco) {
 }
